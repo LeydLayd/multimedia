@@ -1,0 +1,70 @@
+/* --- style.css (DISEÑO GENERAL) --- */
+
+/* 1. Reseteo y Fuentes */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Fredoka', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Todos los Fondos */
+.bg-home { background: linear-gradient(160deg, #ffcfa3 0%, #ff8fab 50%, #e75ea3 100%); }
+.bg-menu { background: linear-gradient(180deg, #7b61ff 0%, #6246ea 100%); }
+.bg-pink { background: linear-gradient(180deg, #ff7096 0%, #ff477e 100%); }
+.bg-cyan { background: linear-gradient(180deg, #4ef0f8 0%, #2bbbf0 100%); }
+.bg-green { background: linear-gradient(180deg, #6efd9a 0%, #00e0c6 100%); }
+.bg-sunset { background: linear-gradient(180deg, #ff758c 0%, #ffc371 100%); }
+.bg-math { background: linear-gradient(180deg, #3db2c5 0%, #2b3d90 100%); }
+
+.screen-container { width: 100%; max-width: 800px; padding: 20px; text-align: center; }
+
+/* 3. Títulos y Textos */
+.main-title { font-size: 4rem; line-height: 1.1; font-weight: 700; margin-bottom: 30px; text-shadow: 3px 3px 0px #fff, -3px -3px 0px #fff, 3px -3px 0px #fff, -3px 3px 0px #fff; }
+.section-title { color: white; font-size: 2rem; margin-bottom: 30px; text-shadow: 2px 2px 0px rgba(0,0,0,0.2); }
+.text-blue { color: #00b4d8; } .text-orange { color: #ffb703; }
+
+/* 4. Diseño Visual de las Tarjetas (¡SIN GRID!) */
+/* Usaremos esta clase para CUALQUIER tarjeta en cualquier pantalla */
+.card-item {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    height: 100%;
+    cursor: pointer;
+    text-decoration: none; /* Por si es un enlace */
+}
+
+@keyframes pulso {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.card-item:hover { transform: rotate(-3deg) scale(1.05); transition: transform 0.2s ease; }
+.card-item .icon { font-size: 3rem; margin-bottom: 10px; }
+.card-item h3 { color: #333; font-size: 1.2rem; margin-bottom: 8px; font-weight: 700; }
+.card-item p { color: #666; font-size: 0.9rem; line-height: 1.3; font-weight: 400; }
+
+/* 5. Botones y Menú Principal */
+.pill-button{animation: pulso 1s infinite ease-in-out; border-radius: 50px; padding: 15px; font-size: 1.2rem; font-weight: 600; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 3px solid white; margin-bottom: 20px; display: block; text-decoration: none; text-align: center; }
+.pill-label, .back-link {border-radius: 50px; padding: 15px; font-size: 1.2rem; font-weight: 600; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 3px solid white; margin-bottom: 20px; display: block; text-decoration: none; text-align: center; }
+.pill-button:hover{transform: scale(1.05)}
+.orange-pill { background-color: #fca311; color: white; }
+.white-pill { background-color: white; color: #ff7096; border-color: #ffbc42; }
+.back-link { background: rgba(255,255,255,0.2); color: white; width: auto; display: inline-block; border: none;}
+
+/* Grid del menú principal (que es especial) */
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; justify-items: center; max-width: 400px; margin: 0 auto;}
+.menu-card { background: white; border-radius: 20px; width: 240px; height: 220px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 6px 0px #00b4d8; border: 2px solid #00b4d8; text-decoration: none; }
+.menu-card .icon { font-size: 2.5rem; } .menu-card p { color: #00b4d8; font-weight: 700; }
+.math-card { grid-column: span 2; width: 260px; }
+.menu-card:hover{transform: rotate(-3deg) scale(1.05); transition: transform 0.2s ease}

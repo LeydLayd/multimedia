@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentos Mágicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/grid-tres.css"> 
+    <link rel="stylesheet" href="../css/ilustraciones.css">
+</head>
+<body>
+
+    <div class="main-scene">
+        <div class="flipper-object" id="escenario-giratorio">
+            
+            <div class="scene-face face-front">
+                <div class="screen-container-front">
+                    <h2 class="section-title">Biblioteca Mágica</h2>
+                    <p style="color: white; margin-bottom: 30px;">¡Elige un cuento para leer!</p>
+            
+                    <div class="grid-3-cols">
+                        
+                        <div class="gallery-card" onclick="leerCuento(this)" 
+                             data-titulo="El Bosque de los Sueños"
+                             data-archivo="../assets/historias/bosque.txt"><video src="../assets/videos/video-bosque.mp4" autoplay loop muted playsinline></video>
+                            <p>El Bosque de los Sueños</p>
+                        </div>
+
+                        <div class="gallery-card" onclick="leerCuento(this)" 
+                             data-titulo="Viaje a las Estrellas"
+                             data-archivo="../assets/historias/viaje.txt"><video src="../assets/videos/video-estrellas.mp4" autoplay loop muted playsinline></video>
+                            <p>Viaje a las Estrellas</p>
+                        </div>
+
+                        <div class="gallery-card" onclick="leerCuento(this)" 
+                             data-titulo="El Baile de Colores"
+                             data-archivo="../assets/historias/colores.txt"><video src="../assets/videos/video-colores.mp4" autoplay loop muted playsinline></video>
+                            <p>El baile de los Colores</p>
+                        </div>
+
+                    </div>
+                    
+                    <a href="cuentos.html" class="back-link">⬅ Volver al menú principal</a>
+                </div>
+            </div>
+
+            <div class="scene-face face-back">
+                <div class="close-btn-back" onclick="cerrarCuento()">✖ Regresar</div>
+                
+                <div class="book-layout">
+                    <div class="book-media">
+                        <video id="video-grande-visor" autoplay loop muted playsinline></video>
+                    </div>
+
+                    <div class="book-text">
+                        <h2 id="titulo-cuento">Título del Cuento</h2>
+                        <p id="texto-cuento-completo">Aquí aparecerá el texto de la historia...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../js/ilustraciones.js"></script>
+
+</body>
+</html>

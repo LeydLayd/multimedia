@@ -1,0 +1,119 @@
+/* --- ESTILOS BASE Y GIRO 3D --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Importante: El scroll lo manejan las caras */
+    font-family: 'Fredoka', sans-serif;
+    background-color: #2c3e50; /* Color de fondo general */
+}
+
+.main-scene {
+    width: 100%;
+    height: 100%;
+    perspective: 1500px;
+}
+
+.flipper-object {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flipper-object.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.scene-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow-y: auto; /* Scroll independiente para cada cara */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- CARA FRONTAL (La Biblioteca) --- */
+.face-front {
+    background: linear-gradient(to bottom, #ff9966, #ff5e62); /* bg-sunset */
+    transform: rotateY(0deg);
+    z-index: 2;
+}
+
+/* --- CARA TRASERA (El Lector de Cuentos) --- */
+.face-back {
+    background-color: #fdfbf7; /* Color papel por defecto */
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- ESTILOS DE TU GRID (Mantenidos) --- */
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.card-item {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: #333;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+}
+
+.icon { font-size: 3rem; margin-bottom: 10px; }
+.section-title { color: white; text-align: center; margin-bottom: 20px; font-size: 2rem; }
+
+/* Estilos del Lector (Cara Trasera) */
+.reader-container {
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.close-btn {
+    position: fixed; /* Flotante para que siempre se vea al leer */
+    top: 20px;
+    left: 20px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 4px 0 #d64545;
+}
+.back-link {
+            color: white;
+            text-decoration: underline;
+            margin-top: 20px;
+            display: inline-block;
+            align-self: center;
+        }

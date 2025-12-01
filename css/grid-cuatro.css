@@ -1,0 +1,17 @@
+/* --- grid-cuatro.css (PARA ABECEDARIO, CUENTOS, MATE) --- */
+
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas */
+    gap: 20px;
+    width: 100%;
+    max-width: 600px; /* Un poco más angosto */
+    margin: 0 auto;
+}
+
+/* En celulares, 1 columna */
+@media (max-width: 600px) {
+    .grid-2-cols {
+        grid-template-columns: 1fr;
+    }
+}
