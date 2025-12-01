@@ -1,0 +1,176 @@
+    /* --- CONFIGURACIÓN BÁSICA --- */
+    html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden; 
+        background-color: #00bcd4;
+        font-family: 'Fredoka', sans-serif;
+    }
+
+    .main-scene {
+        width: 100%;
+        height: 100%;
+        perspective: 2000px; /* Un poco más de perspectiva para pantallas grandes */
+    }
+
+    /* --- EL OBJETO GIRATORIO --- */
+    .flipper-object {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+        transform-style: preserve-3d;
+    }
+
+    .flipper-object.is-flipped {
+        transform: rotateY(180deg);
+    }
+
+    .scene-face {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        overflow-y: auto; /* Scroll si es necesario */
+    }
+
+    /* --- CARA FRONTAL (La Galería) --- */
+    .face-front {
+        background-color: #00bcd4;
+        transform: rotateY(0deg);
+        z-index: 2;
+    }
+    
+    .screen-container-front {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Tarjetas de la galería */
+    .gallery-card { 
+        cursor: pointer; 
+        transition: transform 0.2s; 
+        background: white; 
+        padding: 10px; 
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .gallery-card:hover { transform: scale(1.05);}
+    
+    .gallery-card video { 
+        width: 100%; 
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    
+    .gallery-card p { color: #333; font-weight: 700; margin-top: 10px;}
+
+    /* --- CARA TRASERA (El Cuento Completo) --- */
+    .face-back {
+        background-color: #fdf6e3; /* Color papel suave */
+        color: #2c3e50;
+        transform: rotateY(180deg);
+        display: flex; /* Flex para centrar el contenido */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-btn-back {
+        position: absolute;
+        top: 20px;
+        left: 20px; /* Botón a la izquierda ahora */
+        background: #ff6b6b;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: 0.2s;
+    }
+    .close-btn-back:hover { transform: scale(1.1); }
+
+    /* Contenedor del Libro (Layout dividido) */
+    .book-layout {
+        display: flex;
+        width: 90%;
+        max-width: 1100px;
+        height: 80vh;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Lado Izquierdo: El Video */
+    .book-media {
+        flex: 1; /* Ocupa el 50% */
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    #video-grande-visor {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Cubre todo el espacio sin bordes negros */
+    }
+
+    /* Lado Derecho: El Texto */
+    .book-text {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+        flex-direction: column;
+        justify-content: flex-start; /* ⭐ CAMBIO: De 'center' a 'flex-start' */
+        align-items: stretch;
+    }
+
+    #titulo-cuento {
+        font-family: 'Fredoka', sans-serif;
+        color: #e67e22;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        flex-shrink: 0; /* ⭐ Evita que el título se comprima */
+    }
+
+    #texto-cuento-completo {
+        font-family: 'Lora', serif;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #444;
+        white-space: pre-wrap;
+        flex-grow: 1; /* ⭐ El texto toma el espacio restante */
+    }
+
+    /* --- RESPONSIVE: CELULARES --- */
+    @media (max-width: 768px) {
+        .book-layout {
+            flex-direction: column; /* Cambia a columna: Video arriba, texto abajo */
+            height: 90vh;
+            width: 95%;
+        }
+        .book-media {
+            flex: 0 0 40%; /* El video ocupa el 40% de la altura */
+        }
+        .book-text {
+            flex: 1;
+            padding: 20px;
+            justify-content: flex-start; /* Texto empieza arriba */
+        }
+        #titulo-cuento { font-size: 1.8rem; }
+        #texto-cuento-completo { font-size: 1rem; }
+    }
+
+    .section-title { color: white; margin: 20px 0;}
+    a.back-link { color: white; text-decoration: underline; display: block; margin-top: 20px;}

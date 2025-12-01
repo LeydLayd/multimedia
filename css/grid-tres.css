@@ -1,0 +1,19 @@
+/* --- grid-tres.css (PARA COLORES Y FIGURAS) --- */
+
+.grid-3-cols {
+    display: grid;
+    /* Aquí está la magia: 3 columnas iguales */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    /* Permitimos que sea más ancho para que quepan las 3 */
+    max-width: 900px; 
+    margin: 0 auto;
+}
+
+/* IMPORTANTE: En celulares (pantallas pequeñas), las ponemos en 1 columna */
+@media (max-width: 700px) {
+    .grid-3-cols {
+        grid-template-columns: 1fr;
+    }
+}

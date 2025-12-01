@@ -1,0 +1,152 @@
+       /* --- ESTILOS PARA EL GIRO 3D --- */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Evita doble scroll */
+            background-color: #00bcd4; /* bg-cyan */
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .main-scene {
+            width: 100%;
+            height: 100%;
+            perspective: 1500px;
+        }
+
+        .flipper-object {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flipper-object.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .scene-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow-y: auto; /* Permite scroll en la lista */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- CARA FRONTAL (La Lista) --- */
+        .face-front {
+            background-color: #00bcd4;
+            transform: rotateY(0deg);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cuentos-lista {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .cuentos-lista::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .cuentos-lista::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+
+        .cuentos-lista::-webkit-scrollbar-thumb {
+            background: #00b4d8;
+            border-radius: 10px;
+        }
+        
+        .card-item.cuento-item {
+            background: white;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background 0.2s;
+            text-align: center; /* Opcional: Centrar texto */
+        }
+
+        .card-item.cuento-item:hover {
+            transform: scale(1.02);
+            background: #f0faff;
+            color: #00bcd4;
+        }
+
+        /* --- CARA TRASERA (El Video YouTube) --- */
+        .face-back {
+            background-color: #1a1a1a;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* --- LÍNEAS NUEVAS IMPORTANTE --- */
+            transform-style: preserve-3d; 
+            z-index: 5; /* Asegura que esté por encima */
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 600px;
+            aspect-ratio: 16 / 9;
+            background: black;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            /* --- LÍNEAS NUEVAS (LA SOLUCIÓN) --- */
+            transform: translateZ(1px); /* Empuja el video 1 pixel hacia el frente */
+            -webkit-transform: translateZ(1px); /* Para Safari/Chrome antiguos */
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .close-btn {
+            margin-bottom: 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Fredoka', sans-serif;
+            box-shadow: 0 4px 0 #d64545;
+            transition: transform 0.1s;
+        }
+
+        .close-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: underline;
+            margin-top: 20px;
+            display: inline-block;
+        }
