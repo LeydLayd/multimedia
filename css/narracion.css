@@ -81,7 +81,10 @@
             padding: 15px 20px;
             border-radius: 10px;
             cursor: pointer;
+<<<<<<< HEAD
             height: auto;
+=======
+>>>>>>> 0c088046e1737867f8171d309ac3e11a949c3bd9
             font-weight: 600;
             color: #333;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -109,8 +112,13 @@
         }
 
         .video-container {
+<<<<<<< HEAD
             width: 100%;
             max-width: 1200px;
+=======
+            width: 90%;
+            max-width: 600px;
+>>>>>>> 0c088046e1737867f8171d309ac3e11a949c3bd9
             aspect-ratio: 16 / 9;
             background: black;
             border-radius: 15px;
