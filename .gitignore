@@ -1,0 +1,29 @@
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Sistemas operativos
+*.log
+.cache
+
+# Dependencias (si se agregan en futuro)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos temporales
+*.tmp
+*.bak
+
+# Carpetas específicas del sistema
+__pycache__/
+.pytest_cache/
+
+# Compilaciones
+dist/
+build/
