@@ -1,0 +1,167 @@
+/*
+ * narrados.css
+ * ESTILOS MÁGICOS PARA CUENTOS NARRADOS (FONDO AZUL/CIAN CON BURBUJAS)
+ * Este archivo reemplaza y actualiza las reglas de style.css y narracion.css.
+*/
+
+/* 1. Reset, Fondo y Configuración de Giro 3D */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; 
+    font-family: 'Fredoka', sans-serif;
+    /* Fondo Azul/Cian (para la base de la burbuja) */
+    background: linear-gradient(180deg, #4ef0f8 0%, #2bbbf0 100%); 
+}
+
+.main-scene { width: 100%; height: 100%; perspective: 1500px; }
+.flipper-object {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+.flipper-object.is-flipped { transform: rotateY(180deg); }
+.scene-face {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    backface-visibility: hidden; overflow-y: auto; padding: 20px; box-sizing: border-box;
+}
+
+/* 2. Burbujas y Estrellas (¡La clave para que funcionen!) */
+.bubbles {
+    position: fixed; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+    overflow: hidden; top: 0; left: 0;
+}
+.bubble {
+    position: absolute; bottom: -100px; 
+    background: rgba(255, 255, 255, 0.4); /* Burbujas blancas/azul claro */
+    border-radius: 50%; animation: rise 15s infinite ease-in;
+    box-shadow: 0 0 20px rgba(78, 240, 248, 0.5); /* Sombra azul */
+}
+/* Posición y tamaño de cada burbuja */
+.bubble:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-delay: 0s; animation-duration: 12s; }
+.bubble:nth-child(2) { left: 20%; width: 60px; height: 60px; animation-delay: 2s; animation-duration: 10s; }
+.bubble:nth-child(3) { left: 35%; width: 100px; height: 100px; animation-delay: 4s; animation-duration: 14s; }
+.bubble:nth-child(4) { left: 50%; width: 50px; height: 50px; animation-delay: 0s; animation-duration: 11s; }
+.bubble:nth-child(5) { left: 65%; width: 90px; height: 90px; animation-delay: 3s; animation-duration: 13s; }
+.bubble:nth-child(6) { left: 80%; width: 70px; height: 70px; animation-delay: 1s; animation-duration: 12s; }
+.bubble:nth-child(7) { left: 90%; width: 55px; height: 55px; animation-delay: 5s; animation-duration: 10s; }
+.bubble:nth-child(8) { left: 15%; width: 65px; height: 65px; animation-delay: 6s; animation-duration: 15s; }
+.bubble:nth-child(9) { left: 45%; width: 85px; height: 85px; animation-delay: 2s; animation-duration: 11s; }
+.bubble:nth-child(10) { left: 75%; width: 75px; height: 75px; animation-delay: 4s; animation-duration: 13s; }
+
+@keyframes rise {
+    0% { bottom: -100px; transform: translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { bottom: 110%; transform: translateX(100px); opacity: 0; }
+}
+
+/* Estrellas simples (opcional, si las quieres) */
+.star { position: absolute; font-size: 24px; color: #ffd700; animation: twinkle 3s infinite ease-in-out; }
+.star:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+/* ... (Añadir las reglas nth-child(n) para el resto de estrellas aquí) ... */
+@keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+
+/* 3. Cara Frontal (Lista de Cuentos) */
+.face-front { background-color: transparent; transform: rotateY(0deg); z-index: 2; }
+.screen-container { max-width: 800px; padding: 20px; text-align: center; }
+
+.section-title {
+    color: white; 
+    margin-bottom: 30px; 
+    font-size: 3rem; 
+    /* Título estilo mágico */
+    text-shadow: 
+        -2px -2px 0 #ffc371, 
+         2px -2px 0 #ffc371,
+        -2px  2px 0 #ffc371,
+         2px  2px 0 #ffc371,
+         4px  4px 0 rgba(0,0,0,0.2); 
+}
+
+.cuentos-lista {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.card-item.cuento-item {
+    background: white;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    /* Animación de "salto" para el hover */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    text-align: center; 
+}
+.card-item.cuento-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: #f0faff;
+    color: #00bcd4; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 10px #00bcd4;
+}
+
+/* 4. Cara Trasera (Visor de Video) */
+.face-back {
+    background-color: #1a1a1a;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* IMPORTANTE: Añadimos padding para que el contenido no pegue con los bordes */
+    padding: 40px 20px; 
+}
+.video-container {
+    width: 90%;
+    max-width: 800px; 
+    aspect-ratio: 16 / 9;
+    background: black;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(78, 240, 248, 0.5); /* Brillo azul */
+    transform: translateZ(1px); /* Para prevenir fallos visuales en el giro */
+}
+iframe { width: 100%; height: 100%; }
+
+/* 5. Botones (Estilo Mágico) */
+.close-btn {
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ff6b9d, #ffa500);
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #d64545;
+    transition: transform 0.1s, box-shadow 0.1s;
+    z-index: 10;
+}
+.close-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #d64545; }
+
+.back-link {
+    background: linear-gradient(135deg, #ff6b9d, #ffa500); 
+    color: white;
+    text-decoration: none; 
+    border-radius: 50px; 
+    font-size: 1.3rem; 
+    font-weight: 600;
+    transition: all 0.3s ease; 
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+    width: auto;
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.back-link:hover { transform: scale(1.05); box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6); }
+.back-link span { position: relative; z-index: 1; }

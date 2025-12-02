@@ -1,0 +1,156 @@
+
+/* 1. Reset, Fondo Nocturno y Animaciones Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Fredoka', sans-serif;
+    min-height: 100vh;
+    /* Degradado de noche profunda (Morado oscuro a negro azulado) */
+    background: linear-gradient(180deg, #1b003b 0%, #3a0050 50%, #4f2d72 100%); 
+    overflow: hidden; 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Cielos Estrellados y Estrellas Fugaces */
+
+.shooting-star-scene { /* Renombramos la clase en CSS para consistencia */
+    position: fixed; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+    overflow: hidden; top: 0; left: 0;
+}
+
+.star-trail { /* Renombramos la clase en CSS para consistencia */
+    position: absolute; bottom: -100px; 
+    /* Fondo para burbujas de ensueño, un blanco más sutil y semitransparente */
+    background: rgba(255, 255, 255, 0.15); 
+    border-radius: 50%; animation: rise 15s infinite ease-in;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Brillo suave */
+}
+
+/* Animación de Subida (similar a la de cuentos.css) */
+@keyframes rise {
+    0% { bottom: -100px; transform: translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { bottom: 110%; transform: translateX(100px); opacity: 0; }
+}
+
+/* Reglas Individuales de Posición/Tamaño/Retraso (Más pequeñas y con mayor dispersión) */
+
+/* USAR ESTA ESTRUCTURA PARA LAS BURBUJAS PEQUEÑAS */
+.star-trail:nth-child(1) { left: 5%; width: 40px; height: 40px; animation-delay: 1s; animation-duration: 10s; }
+.star-trail:nth-child(2) { left: 15%; width: 30px; height: 30px; animation-delay: 5s; animation-duration: 12s; }
+.star-trail:nth-child(3) { left: 25%; width: 50px; height: 50px; animation-delay: 2s; animation-duration: 14s; }
+.star-trail:nth-child(4) { left: 35%; width: 25px; height: 25px; animation-delay: 7s; animation-duration: 10s; }
+.star-trail:nth-child(5) { left: 45%; width: 45px; height: 45px; animation-delay: 0s; animation-duration: 13s; }
+.star-trail:nth-child(6) { left: 55%; width: 35px; height: 35px; animation-delay: 4s; animation-duration: 11s; }
+.star-trail:nth-child(7) { left: 65%; width: 55px; height: 55px; animation-delay: 9s; animation-duration: 15s; }
+.star-trail:nth-child(8) { left: 75%; width: 20px; height: 20px; animation-delay: 3s; animation-duration: 9s; }
+.star-trail:nth-child(9) { left: 85%; width: 40px; height: 40px; animation-delay: 6s; animation-duration: 12s; }
+.star-trail:nth-child(10) { left: 95%; width: 60px; height: 60px; animation-delay: 11s; animation-duration: 14s; }
+
+
+/* 3. Contenedor Principal y Título Temático */
+.screen-container {
+    position: relative; z-index: 1;
+    max-width: 650px; 
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 3.5rem; 
+    font-weight: 700; 
+    text-align: center; 
+    color: #fff;
+    margin-bottom: 20px;
+    /* Sombra de la luna y estrellas */
+    text-shadow: 
+        3px 3px 0 #ffd700, /* Sombra dorada */
+        6px 6px 0 #ff6b9d, /* Sombra rosa */
+        9px 9px 20px rgba(0, 0, 0, 0.3);
+}
+
+.section-title .icon {
+    font-size: 3.5rem;
+    color: #ffd700; /* Luna dorada */
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.screen-container p { color: #ccc; margin-bottom: 40px; }
+
+
+/* 4. Grid y Tarjetas (2x2 centrado) */
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.card-item.night-card {
+    /* Fondo limpio y elevado */
+    background: rgba(255, 255, 255, 0.95); 
+    border-radius: 20px;
+    padding: 20px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Borde Morado Suave */
+    border: 3px solid #6246ea; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.night-card:hover {
+    transform: translateY(-8px) scale(1.03); 
+    /* Sombra con brillo morado para destacar */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px #6246ea;
+}
+
+.night-card h3 { color: #333; }
+.night-card p { color: #666; margin: 5px 0; }
+.night-card .icon { font-size: 3rem; margin-bottom: 10px; }
+
+
+/* 5. Reproductor de Audio (Personalización) */
+audio { 
+    width: 100%; 
+    margin-top: 15px; 
+    border-radius: 50px; 
+    filter: sepia(20%) hue-rotate(200deg) saturate(150%); /* Tono azul/morado tenue */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 40px; /* Altura moderna */
+}
+
+/* 6. Botón de Regreso (Estilo Mágico) */
+.back-link {
+    display: inline-block; 
+    padding: 18px 40px;
+    /* Degradado de luna y noche */
+    background: linear-gradient(135deg, #ffd700, #ff6b9d); 
+    color: white;
+    text-decoration: none; 
+    border-radius: 50px; 
+    font-size: 1.3rem; 
+    font-weight: 600;
+    transition: all 0.3s ease; 
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+    position: relative; 
+    overflow: hidden;
+    margin-top: 30px;
+}
+.back-link:hover { transform: scale(1.1); box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6); }
+
+/* 7. Responsivo (Se mantiene bien) */
+@media (max-width: 768px) {
+    .screen-container { max-width: 100%; }
+    .grid-2-cols { grid-template-columns: 1fr; }
+    .section-title { font-size: 2.5rem; }
+    .star-trail { animation-duration: 7s !important; } /* Estrellas más rápidas en móvil */
+}

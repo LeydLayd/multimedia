@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Gigante 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/grid-tres.css">
+        <link rel="stylesheet" href="../css/biblioteca.css"> 
+</head>
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <div class="main-scene">
+        <div class="flipper-object" id="libro-gigante">
+            
+            <div class="scene-face face-front">
+                <h2 class="section-title">📚 Biblioteca Gigante</h2>
+
+                <div style="display:flex; justify-content:center; width:100%;">
+                    <input type="text" id="buscador" onkeyup="buscarCuento()" placeholder="🔍 Buscar un cuento..." 
+                    style="padding: 15px; border-radius: 50px; border: none; width: 100%; max-width: 500px; margin-bottom: 30px; text-align: center; font-family: 'Fredoka'; outline:none;">
+                </div>
+
+                <div class="grid-3-cols">
+                    <div class="card-item" onclick="abrirCuento('cerditos')">
+                        <div class="icon">🐷</div>
+                        <h3>Los 3 Cerditos</h3>
+                        <p>Clásico</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('caperucita')">
+                        <div class="icon">🐺</div>
+                        <h3>Caperucita</h3>
+                        <p>Aventura</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('pinocho')">
+                        <div class="icon">🤥</div>
+                        <h3>Pinocho</h3>
+                        <p>Fantasía</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('patito_feo')">
+                        <div class="icon">🦆</div>
+                        <h3>El Patito Feo</h3>
+                        <p>Autoestima</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('tortuga_liebre')">
+                        <div class="icon">🐢</div>
+                        <h3>La Tortuga</h3>
+                        <p>Fábula</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('ricitos')">
+                        <div class="icon">👧</div>
+                        <h3>Ricitos de Oro</h3>
+                        <p>Curiosidad</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('hansel_gretel')">
+                        <div class="icon">🍭</div>
+                        <h3>Hansel y Gretel</h3>
+                        <p>Hermanos</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('leon_raton')">
+                        <div class="icon">🦁</div>
+                        <h3>El León y Ratón</h3>
+                        <p>Amistad</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('cenicienta')">
+                        <div class="icon">👠</div>
+                        <h3>La Cenicienta</h3>
+                        <p>Princesas</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('blancanieves')">
+                        <div class="icon">🍎</div>
+                        <h3>Blancanieves</h3>
+                        <p>Princesas</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('cigarra_hormiga')">
+                        <div class="icon">🐜</div>
+                        <h3>Cigarra y Hormiga</h3>
+                        <p>Esfuerzo</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('gato_botas')">
+                        <div class="icon">👢</div>
+                        <h3>Gato con Botas</h3>
+                        <p>Ingenio</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('peter_pan')">
+                        <div class="icon">🧚</div>
+                        <h3>Peter Pan</h3>
+                        <p>Fantasía</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('lechera')">
+                        <div class="icon">🥛</div>
+                        <h3>La Lechera</h3>
+                        <p>Atención</p>
+                    </div>
+
+                    <div class="card-item" onclick="abrirCuento('juan_habichuelas')">
+                        <div class="icon">🌱</div>
+                        <h3>Juan y Frijoles</h3>
+                        <p>Aventura</p>
+                    </div>  
+                    
+                    <div class="card-item" style="opacity: 0.5;">
+                        <div class="icon">🔒</div>
+                        <h3>Próximamente</h3>
+                        <p>Más cuentos...</p>
+                    </div>   
+                    
+                </div>
+
+                <div class="center-btn">
+                    <a href="cuentos.html" class="back-link">
+                        <span>⬅ Volver a Cuentos</span>
+                    </a>
+</div>
+                
+            </div>
+
+            <div class="scene-face face-back" id="fondo-lector">
+                <button class="close-btn" onclick="cerrarCuento()">✖ Cerrar Libro</button>
+                
+                <div class="reader-container">
+                    <div id="lector-icono" style="font-size: 4rem; text-align: center;">📖</div>
+                    <h1 id="lector-titulo" style="text-align: center; color: #333;">Título</h1>
+                    <hr style="border: 0; border-top: 2px solid #eee; margin: 20px 0;">
+                    <div id="lector-texto" style="text-align: justify; line-height: 1.8; font-size: 1.1rem; color: #444;">
+                        Cargando historia...
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/datos_cuentos.js"></script> 
+
+    <script>
+        // --- 1. DATOS DE EJEMPLO (Por si no carga tu archivo externo aún) ---
+        // Si ya tienes datos_cuentos.js funcionando, puedes borrar este bloque 'const cuentosData...'
+        const datosEjemplo = {
+            'cerditos': {
+                titulo: "Los Tres Cerditos",
+                texto: "<p>Había una vez tres cerditos que vivían al aire libre cerca del bosque...</p><p>El lobo sopló y sopló...</p>",
+                icono: "🐷",
+                colorFondo: "#ffebee" // Un rosita claro
+            },
+            'caperucita': {
+                titulo: "Caperucita Roja",
+                texto: "<p>Érase una vez una niña muy bonita. Su madre le había hecho una capa roja...</p>",
+                icono: "🐺",
+                colorFondo: "#ffebee"
+            },
+            'pinocho': {
+                titulo: "Pinocho",
+                texto: "<p>Gepetto, el carpintero, fabricó un muñeco de madera...</p>",
+                icono: "🤥",
+                colorFondo: "#e3f2fd"
+            }
+        };
+
+        // --- 2. LÓGICA DEL GIRO ---
+        
+        function abrirCuento(id) {
+            // Intenta usar tu archivo externo 'cuentosData', si no existe usa 'datosEjemplo'
+            const data = (typeof cuentosData !== 'undefined') ? cuentosData[id] : datosEjemplo[id];
+            
+            if (data) {
+                // Rellenar la Cara Trasera con la info
+                document.getElementById('lector-titulo').innerText = data.titulo;
+                document.getElementById('lector-texto').innerHTML = data.texto; // innerHTML permite párrafos <p>
+                document.getElementById('lector-icono').innerText = data.icono || "📖";
+                
+                // Opcional: Cambiar color de fondo de la cara trasera
+                document.getElementById('fondo-lector').style.backgroundColor = data.colorFondo || "#fdfbf7";
+
+                // ACTIVAR EL GIRO
+                document.getElementById('libro-gigante').classList.add('is-flipped');
+            } else {
+                alert("Este cuento aún no está escrito 😢");
+            }
+        }
+
+        function cerrarCuento() {
+            // DESACTIVAR EL GIRO (Vuelve al frente)
+            document.getElementById('libro-gigante').classList.remove('is-flipped');
+            
+            // Opcional: Resetear el scroll del lector para la próxima vez
+            setTimeout(() => {
+                document.querySelector('.face-back').scrollTop = 0;
+            }, 800); // Espera a que termine la animación
+        }
+
+        // --- 3. TU BUSCADOR (Mantenido) ---
+        function buscarCuento() {
+            var input = document.getElementById("buscador");
+            var filtro = input.value.toUpperCase();
+            var contenedor = document.querySelector(".grid-3-cols");
+            var tarjetas = contenedor.getElementsByClassName("card-item");
+
+            for (var i = 0; i < tarjetas.length; i++) {
+                var titulo = tarjetas[i].getElementsByTagName("h3")[0];
+                if (titulo) {
+                    var textoTitulo = titulo.textContent || titulo.innerText;
+                    if (textoTitulo.toUpperCase().indexOf(filtro) > -1) {
+                        tarjetas[i].style.display = "";
+                    } else {
+                        tarjetas[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

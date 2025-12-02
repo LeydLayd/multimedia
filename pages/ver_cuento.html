@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .screen-container {
+            position: relative;
+        }
+
+        .btn-flotante {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            width: auto; /* Que no ocupe todo el ancho */
+            margin: 0;
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+
+        #titulo-cuento {
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body id="body-fondo" class="bg-home">
+
+<div class="screen-container">
+
+    <a href="biblioteca.html" class="back-link btn-flotante">⬅ Volver</a>
+
+    <h2 id="titulo-cuento" class="section-title">Cargando...</h2>
+
+    <div class="card-item" style="max-width: 600px; margin: 0 auto; min-height: 300px; justify-content: center;">
+
+        <div id="icono-cuento" style="font-size: 5rem; margin-bottom: 20px;">📖</div>
+
+        <p id="texto-cuento" style="text-align: justify; font-size: 1.2rem; line-height: 1.6; padding: 0 20px;">
+            Buscando el cuento...
+        </p>
+    </div>
+</div>
+
+<script src="../js/datos_cuentos.js"></script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const cuentoId = params.get('id');
+    const infoCuento = cuentosData[cuentoId];
+
+    if (infoCuento) {
+        document.getElementById('titulo-cuento').innerText = infoCuento.titulo;
+        document.getElementById('texto-cuento').innerHTML = infoCuento.texto;
+        document.getElementById('body-fondo').className = infoCuento.colorFondo;
+
+    } else {
+        document.getElementById('titulo-cuento').innerText = "Cuento no encontrado 😢";
+        document.getElementById('texto-cuento').innerText = "Lo sentimos, no encontramos este libro.";
+    }
+</script>
+</body>
+</html>

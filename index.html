@@ -11,6 +11,8 @@
 </head>
 <body class="bg-home">
 
+    <div id="confettiContainer" class="confetti-container"></div>
+    
     <div class="screen-container">
         <h1 class="main-title">
             <span class="text-blue">Aprende</span><br>
@@ -29,6 +31,62 @@
             3 a 7 años
         </div>
     </div>
+
+    <script>
+        // GENERADOR DE CONFETI AUTOMÁTICO
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ff6b9d', '#ffa500', '#00b4d8', '#ffbc42', '#6efd9a', '#7b61ff', '#ff477e', '#4ef0f8'];
+            const shapes = ['square', 'circle', 'triangle', 'rectangle'];
+            
+            // Crear 50 piezas de confeti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = `confetti ${shapes[Math.floor(Math.random() * shapes.length)]}`;
+                    
+                    // Posición horizontal aleatoria
+                    const leftPosition = Math.random() * 100;
+                    confetti.style.left = leftPosition + '%';
+                    
+                    // Color aleatorio
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.setProperty('--color', randomColor);
+                    
+                    // Deriva horizontal aleatoria (movimiento en X)
+                    const drift = (Math.random() - 0.5) * 200;
+                    confetti.style.setProperty('--drift', drift + 'px');
+                    
+                    // Rotación aleatoria
+                    const rotation = Math.random() * 720 - 360;
+                    confetti.style.setProperty('--rotation', rotation + 'deg');
+                    
+                    // Duración de caída aleatoria
+                    const duration = 3 + Math.random() * 2;
+                    confetti.style.animationDuration = duration + 's';
+                    
+                    // Delay aleatorio para efecto escalonado
+                    const delay = Math.random() * 2;
+                    confetti.style.animationDelay = delay + 's';
+                    
+                    container.appendChild(confetti);
+                    
+                    // Eliminar confeti después de que termine la animación
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, (duration + delay) * 1000);
+                }, i * 50); // Crear confeti cada 50ms
+            }
+        }
+
+        // Ejecutar confeti al cargar la página
+        window.addEventListener('load', () => {
+            createConfetti();
+            
+            // Repetir confeti cada 5 segundos
+            setInterval(createConfetti, 5000);
+        });
+    </script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
             height: 100%;
             margin: 0;
             overflow: hidden; /* Evita doble scroll */
-            background-color: #00bcd4; /* bg-cyan */
+            background: linear-gradient(180deg, #1A237E 0%, #4527A0 100%) !important;
             font-family: 'Fredoka', sans-serif;
         }
 
@@ -71,7 +71,7 @@
         }
 
         .cuentos-lista::-webkit-scrollbar-thumb {
-            background: #00b4d8;
+            background: #5a79e9;
             border-radius: 10px;
         }
         
@@ -81,6 +81,10 @@
             padding: 15px 20px;
             border-radius: 10px;
             cursor: pointer;
+<<<<<<< HEAD
+            height: auto;
+=======
+>>>>>>> 0c088046e1737867f8171d309ac3e11a949c3bd9
             font-weight: 600;
             color: #333;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -91,7 +95,7 @@
         .card-item.cuento-item:hover {
             transform: scale(1.02);
             background: #f0faff;
-            color: #00bcd4;
+            color: #225ce2ca;
         }
 
         /* --- CARA TRASERA (El Video YouTube) --- */
@@ -108,8 +112,13 @@
         }
 
         .video-container {
+<<<<<<< HEAD
+            width: 100%;
+            max-width: 1200px;
+=======
             width: 90%;
             max-width: 600px;
+>>>>>>> 0c088046e1737867f8171d309ac3e11a949c3bd9
             aspect-ratio: 16 / 9;
             background: black;
             border-radius: 15px;
